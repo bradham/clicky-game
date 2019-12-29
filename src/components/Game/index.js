@@ -24,7 +24,7 @@ class Game extends Component {
 
     console.log("newData in handleCorrectGuess is: " + newData);
     this.setState({ data: newData, score: newScore });
-    };
+  };
 
   handleIncorrectGuess = data => {
     this.setState({
@@ -70,9 +70,12 @@ class Game extends Component {
   render() {
     return (
       <div>
-       {//TODO:}
-        }
-       <Nav score={this.state.score}/>
+        <Nav score={this.state.score} />
+        <Container>
+          <Header />
+          <ClickItem />
+          <Footer />
+        </Container>
       </div>
     );
   }

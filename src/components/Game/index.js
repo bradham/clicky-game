@@ -6,11 +6,12 @@ import ClickItem from "../ClickItem";
 import Footer from "../Footer";
 import data from "../../data.json";
 
-FIXME: // See activity 29-Stu_FriendRefactor/Solved
+//FIXME: // See activity 29-Stu_FriendRefactor/Solved
 
 class Game extends Component {
   state = {
-    TODO:
+    data: data,
+    score: 0
   };
 
   componentDidMount() {
@@ -18,9 +19,12 @@ class Game extends Component {
   }
 
   handleCorrectGuess = newData => {
-    TODO:
-    });
-  };
+    //Add to the sore for a corrct guess
+    let newScore = this.state.score + 1;
+
+    console.log("newData in handleCorrectGuess is: " + newData);
+    this.setState({ data: newData, score: newScore });
+    };
 
   handleIncorrectGuess = data => {
     this.setState({
@@ -66,7 +70,9 @@ class Game extends Component {
   render() {
     return (
       <div>
-       TODO:
+       {//TODO:}
+        }
+       <Nav score={this.state.score}/>
       </div>
     );
   }

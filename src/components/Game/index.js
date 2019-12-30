@@ -7,6 +7,8 @@ import Footer from "../Footer";
 import data from "../../data.json";
 
 //FIXME: // See activity 29-Stu_FriendRefactor/Solved
+let topScore = 0;
+let shake = false;
 
 class Game extends Component {
   state = {
@@ -19,14 +21,19 @@ class Game extends Component {
   }
 
   handleCorrectGuess = newData => {
-    //Add to the sore for a corrct guess
+    //Add to the score for a corrct guess
     let newScore = this.state.score + 1;
+    //Assuming newScore and topScore started the same then you only need to increment topScore by 1
+    if (newScore > topScore) {
+      topScore++;
+    }
 
-    console.log("newData in handleCorrectGuess is: " + newData);
+    newData = this.shuffleData(newData);
     this.setState({ data: newData, score: newScore });
   };
 
   handleIncorrectGuess = data => {
+
     this.setState({
       data: this.resetData(data),
       score: 0
@@ -70,17 +77,18 @@ class Game extends Component {
   render() {
     return (
       <div>
-        <Nav score={this.state.score} />
+        <Nav score={this.state.score} topScore={topScore} />
         <Container>
           <Header />
           {this.state.data.map(dataItem => (
-          <ClickItem
-            handleClick={this.handleItemClick}
-            id={dataItem.id}
-            key={dataItem.id}
-            image={dataItem.image}
-          />
-        ))}
+            <ClickItem
+              handleClick={this.handleItemClick}
+              id={dataItem.id}
+              key={dataItem.id}
+              image={dataItem.image}
+              shake={shake}
+            />
+          ))}
           <Footer />
         </Container>
       </div>

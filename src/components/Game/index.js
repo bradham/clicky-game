@@ -8,12 +8,12 @@ import data from "../../data.json";
 
 //FIXME: // See activity 29-Stu_FriendRefactor/Solved
 let topScore = 0;
-let shake = false;
 
 class Game extends Component {
   state = {
     data: data,
-    score: 0
+    score: 0,
+    shake: false
   };
 
   componentDidMount() {
@@ -29,14 +29,19 @@ class Game extends Component {
     }
 
     newData = this.shuffleData(newData);
-    this.setState({ data: newData, score: newScore });
+    this.setState({
+      data: newData,
+      score: newScore,
+      shake: false
+    });
   };
 
   handleIncorrectGuess = data => {
 
     this.setState({
       data: this.resetData(data),
-      score: 0
+      score: 0,
+      shake: true
     });
   };
 
@@ -78,19 +83,19 @@ class Game extends Component {
     return (
       <div>
         <Nav score={this.state.score} topScore={topScore} />
+        <Header />
         <Container>
-          <Header />
           {this.state.data.map(dataItem => (
             <ClickItem
               handleClick={this.handleItemClick}
               id={dataItem.id}
               key={dataItem.id}
               image={dataItem.image}
-              shake={shake}
+              shake={this.state.shake}
             />
           ))}
-          <Footer />
         </Container>
+        <Footer />
       </div>
     );
   }

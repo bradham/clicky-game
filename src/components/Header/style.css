@@ -1,11 +1,11 @@
 .header {
-  background-color: #2C323C;
+  background-color: #0C2340;
   background-image: url("/assets/images/geometry.svg");
   background-repeat: repeat;
   color: white;
   min-height: 150px;
   padding: 130px 20px; 
-  padding-bottom: 140px;
+  padding-bottom: 40px;
   text-align: center;
 }
 

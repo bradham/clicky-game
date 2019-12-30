@@ -73,7 +73,14 @@ class Game extends Component {
         <Nav score={this.state.score} />
         <Container>
           <Header />
-          <ClickItem />
+          {this.state.data.map(dataItem => (
+          <ClickItem
+            handleClick={this.handleItemClick}
+            id={dataItem.id}
+            key={dataItem.id}
+            image={dataItem.image}
+          />
+        ))}
           <Footer />
         </Container>
       </div>

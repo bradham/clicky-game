@@ -9,7 +9,8 @@ function Nav(props) {
     <nav className="navbar">
       <ul>
         <li className="brand">
-          <a href="/">Clicky Game</a>
+          {/* Changed href below to refresh because github page link took / to root of project instead of page */}
+          <a href="javascript:history.go(0)">Clicky Game</a>
         </li>
         <NavMessage score={props.score} topScore={props.topScore} />
         <li>

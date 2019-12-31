@@ -6,9 +6,10 @@ import ClickItem from "../ClickItem";
 import Footer from "../Footer";
 import data from "../../data.json";
 
-//FIXME: // See activity 29-Stu_FriendRefactor/Solved
 let topScore = 0;
 
+//data is an array of pic urls and other object info
+//shake will be activated when a duplicate click is detected
 class Game extends Component {
   state = {
     data: data,
